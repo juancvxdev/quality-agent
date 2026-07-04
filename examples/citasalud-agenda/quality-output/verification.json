@@ -1,0 +1,65 @@
+{
+  "proyecto": "citasalud-agenda",
+  "version": "1.1.0",
+  "fecha": "2026-07-04",
+  "commit": "d1c1f60",
+  "spec": "specs/001-agenda-citas/spec.md",
+  "tests": {
+    "comando": "./gradlew clean test jacocoTestReport --console=plain",
+    "passed": 6,
+    "total": 6,
+    "coverage": 100.0,
+    "coverage_fuente": "build/reports/jacoco/test/jacocoTestReport.xml; LINE covered=22 missed=0"
+  },
+  "security": {
+    "fuente": "Semgrep MCP verificado con uvx --python 3.12 semgrep-mcp --help; escaneo ejecutado con Semgrep CLI p/java en quality-output/semgrep.json + grep local de secretos",
+    "critical": 0,
+    "high": 0,
+    "secrets": 0,
+    "hallazgos": []
+  },
+  "criteria": [
+    {
+      "id": "FR-001",
+      "fuente": "spec.md - FR-001 / User Story 1, escenario 1",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.reservaFranjaLibre_ok PASA"
+    },
+    {
+      "id": "FR-002",
+      "fuente": "spec.md - FR-002 / User Story 1, escenario 2",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.reservaOtraFranja_ok PASA"
+    },
+    {
+      "id": "FR-003",
+      "fuente": "spec.md - FR-003 / User Story 2, escenario 1",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.reservaFranjaOcupada_secuencial_rechaza PASA"
+    },
+    {
+      "id": "FR-004",
+      "fuente": "spec.md - FR-004",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.apiRest_creaYListaReservas PASA; ReservaController.crear devuelve 201 CREATED y listar devuelve la reserva"
+    },
+    {
+      "id": "FR-005",
+      "fuente": "spec.md - FR-005",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.apiRest_franjaOcupada_devuelveConflict PASA; manejarOcupada devuelve HttpStatus.CONFLICT"
+    },
+    {
+      "id": "FR-006",
+      "fuente": "spec.md - FR-006 / User Story 2, escenario 2",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.reservaFranjaOcupada_concurrente_rechaza PASA; AgendaService.reservar y listar son synchronized"
+    },
+    {
+      "id": "EDGE-CONCURRENCY",
+      "fuente": "spec.md - Edge Cases: dos pacientes solicitan la misma franja en el mismo instante",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.reservaFranjaOcupada_concurrente_rechaza lanza dos tareas con CyclicBarrier; resultado esperado: 1 exito y 1 rechazo"
+    }
+  ]
+}

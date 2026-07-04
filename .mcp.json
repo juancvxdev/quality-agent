@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "semgrep": {
+      "command": "uvx",
+      "args": ["--python", "3.12", "semgrep-mcp"],
+      "env": {
+        "SEMGREP_APP_TOKEN": "${SEMGREP_APP_TOKEN}"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+
+  \u2713 GATE DE CALIDAD: APROBADO
+  \u2713 PRUEBAS: 6/6 · cobertura 100.0% \u2265 80%
+  \u2713 SEGURIDAD: 0 críticas · 0 secretos
+  \u2713 CRITERIOS: 7 criterios cumplen
+

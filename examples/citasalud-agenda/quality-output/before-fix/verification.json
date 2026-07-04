@@ -1,0 +1,60 @@
+{
+  "proyecto": "citasalud-agenda",
+  "version": "1.1.0",
+  "fecha": "2026-07-04",
+  "commit": "d1c1f60",
+  "spec": "specs/001-agenda-citas/spec.md",
+  "estado": "bloqueado antes de corregir FR-006",
+  "tests": {
+    "comando": "gradle test jacocoTestReport",
+    "passed": 3,
+    "total": 3,
+    "coverage": 63.6,
+    "coverage_fuente": "build/reports/jacoco/test/jacocoTestReport.xml, primera ejecucion local: 14 lineas cubiertas de 22"
+  },
+  "security": {
+    "fuente": "Semgrep MCP disponible via uvx --python 3.12 semgrep-mcp; escaneo reproducible con Semgrep CLI p/java + grep local de secretos",
+    "critical": 0,
+    "high": 0,
+    "secrets": 0,
+    "hallazgos": []
+  },
+  "criteria": [
+    {
+      "id": "FR-001",
+      "fuente": "spec.md - FR-001 / User Story 1, escenario 1",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.reservaFranjaLibre_ok PASA"
+    },
+    {
+      "id": "FR-002",
+      "fuente": "spec.md - FR-002 / User Story 1, escenario 2",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.reservaOtraFranja_ok PASA"
+    },
+    {
+      "id": "FR-003",
+      "fuente": "spec.md - FR-003 / User Story 2, escenario 1",
+      "status": "cumple",
+      "evidencia": "AgendaServiceTest.reservaFranjaOcupada_secuencial_rechaza PASA"
+    },
+    {
+      "id": "FR-004",
+      "fuente": "spec.md - FR-004",
+      "status": "desconocido",
+      "evidencia": "no existia prueba directa del controller REST en la suite inicial"
+    },
+    {
+      "id": "FR-005",
+      "fuente": "spec.md - FR-005",
+      "status": "desconocido",
+      "evidencia": "no existia prueba directa que verificara HttpStatus.CONFLICT en la suite inicial"
+    },
+    {
+      "id": "FR-006",
+      "fuente": "spec.md - FR-006 / Edge Case de concurrencia",
+      "status": "incumple",
+      "evidencia": "no existia prueba reservaFranjaOcupada_concurrente_rechaza; AgendaService.reservar no era sincronizado"
+    }
+  ]
+}

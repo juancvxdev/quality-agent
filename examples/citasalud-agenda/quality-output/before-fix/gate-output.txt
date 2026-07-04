@@ -1,0 +1,10 @@
+
+  \u2717 GATE DE CALIDAD: BLOQUEADO
+
+  \u2717 PRUEBAS: cobertura 63.6% < umbral 80%
+  \u2713 SEGURIDAD: OK
+  \u2717 CRITERIOS: FR-004: desconocido; FR-005: desconocido; FR-006: incumple
+
+  \u2192 El código no cumple la Definition of Done. No se aprueba.
+  \u2192 Corrige lo señalado y vuelve a ejecutar `quality verify`.
+
